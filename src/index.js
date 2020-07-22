@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import productReducer from './redux/product-reducer';
+import CountReducer from './redux/count-reducer';
+import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(productReducer);
+const store = createStore(
+  combineReducers({ productState: productReducer, countState: CountReducer }),
+  composeWithDevTools(applyMiddleware(thunk))
+);
+
+console.log(store.getState());
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

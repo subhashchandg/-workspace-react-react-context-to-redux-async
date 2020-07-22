@@ -3,8 +3,8 @@ import Product from './product';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (store) => ({
-  cartItems: store.cartItems,
-  products: store.products,
+  cartItems: store.productState.cartItems,
+  products: store.productState.products,
 });
 const mapDispatchToProps = (dispatch) => ({
   removeFromCart: (id) => dispatch({ type: 'REMOVE_FROM_CART', id: id }),

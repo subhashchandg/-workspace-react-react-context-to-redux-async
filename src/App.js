@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Header from './components/header';
+import Count from './components/count';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './components/routes';
 

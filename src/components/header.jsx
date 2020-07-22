@@ -2,7 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-const mapStateToProps = (store) => ({ cartItems: store.cartItems });
+const mapStateToProps = (store) => ({
+  cartItems: store.productState.cartItems,
+});
 
 export default connect(mapStateToProps)((props) => {
   const { cartItems } = props;

@@ -1,13 +1,8 @@
-const allProducts = [
-  { id: 123, name: 'HP Laptop', price: '$122.33' },
-  { id: 124, name: 'Del Laptop', price: '$120.33' },
-  { id: 125, name: 'MAC Laptop', price: '$127.33' },
-  { id: 126, name: 'Lenovo Laptop', price: '$129.33' },
-  { id: 127, name: 'Toshiba Laptop', price: '$189.33' },
-];
-
-export default (state = { products: allProducts, cartItems: [] }, action) => {
+export default (state = { products: [], cartItems: [] }, action) => {
   switch (action.type) {
+    case 'FETCH_PRODUCTS':
+      console.log('Received a fetch product casae');
+      return { ...state, products: action.payload };
     case 'ADD_TO_CART':
       if (state.cartItems.find((el) => el.id === action.id)) {
         return {
@@ -40,6 +35,6 @@ export default (state = { products: allProducts, cartItems: [] }, action) => {
         };
       }
     default:
-      return state;
+      return { ...state };
   }
 };
